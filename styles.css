@@ -26,6 +26,7 @@ h1, h2, h3 {
     padding: 8px;
     border-radius: 14px;
     font-family: 'Jua';
+    text-shadow: 2px 2px 2px black;
     text-align: center;
     background-color: #489FF5;
     box-shadow: 0 2px 0 #255381, 0 2px 2px rgba(0,0,0,0.4);
@@ -53,3 +54,4 @@ h1, h2, h3 {
     box-shadow: 0 6px 0 #151381, 0 2px 2px rgba(0,0,0,0.4);
     border: 2px solid black;             /* mimics the stroke in XML */
 }
+
