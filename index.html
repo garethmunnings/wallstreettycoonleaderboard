@@ -2,48 +2,57 @@
 <html>
     <head>
         <title>Leaderboard</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     </head>
     <body>
-        <h2>Leaderboard</h2>
-        <table id="leaderboard" border="1">
+        <h2 class="h2">The Dot-Com Boom</h2>
+        <table id="minigame1" border="1">
+            <tr><th>Time Stamp</th><th>Player</th><th>Score</th></tr>
+        </table>
+        <h2 class="h2">The Crypto Rise</h2>
+        <table id="minigame2" border="1">
+            <tr><th>Time Stamp</th><th>Player</th><th>Score</th></tr>
+        </table>
+        <h2 class="h2">The AI Revolution</h2>
+        <table id="minigame3" border="1">
             <tr><th>Time Stamp</th><th>Player</th><th>Score</th></tr>
         </table>
 
         <script>
-            const url = "https://script.google.com/macros/s/AKfycbw6atWDw5sUQSQHWNDISCXgyVVxG85Zo3OqvCqOz2B4tZDZIqdc4XEkjHHjj2lsql99/exec";
+const scriptUrl = "https://script.google.com/macros/s/AKfycbzTkXzmBDQnire8iaBmc2bvC3HC30DowBsFli8hZfffiOMivUQScRxdj8mQ7O_im3fn/exec";
 
-            fetch(url)
-                .then(res => res.json())
-                .then(data => {
-                console.log("Fetched data:", data); // 👈 See what you actually got
-                const table = document.getElementById("leaderboard");
+function loadLeaderboard(minigame, tableId) {
+  fetch(`${scriptUrl}?game=${minigame}`)
+    .then(res => res.json())
+    .then(data => {
+      const table = document.getElementById(tableId);
+      table.innerHTML = "<tr><th>Time Stamp</th><th>Player</th><th>Score</th></tr>";
+      data.forEach(row => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${new Date(row.timestamp).toLocaleString()}</td>
+          <td>${row.username}</td>
+          <td>${row.score}</td>`;
+        table.appendChild(tr);
+      });
+    })
+    .catch(err => console.error("Error:", err));
+}
 
-                data.forEach((row) => {
-                const tr = document.createElement("tr");
-                tr.innerHTML = `
-                    <td>${row.timestamp}</td>
-                    <td>${row.username}</td>
-                    <td>${row.score}</td>`;
-                table.appendChild(tr);
-                });
-            }).catch(err => console.error("Error:", err));
-            setInterval(() => {
-            fetch(url)
-                .then(res => res.json())
-                .then(data => {
-                const table = document.getElementById("leaderboard");
-                // Clear the table (keep headers)
-                table.innerHTML = "<tr><th>Time Stamp</th><th>Player</th><th>Score</th></tr>";
-                data.forEach(row => {
-                const tr = document.createElement("tr");
-                tr.innerHTML = `
-                    <td>${new Date(row.timestamp).toLocaleString()}</td>
-                    <td>${row.username}</td>
-                    <td>${row.score}</td>`;
-                table.appendChild(tr);
-                });
-            }).catch(err => console.error("Error refreshing leaderboard:", err));
-            }, 100); // refresh every 0.1 second
-        </script>
+// Load all minigames immediately
+loadLeaderboard('minigame1', 'minigame1');
+loadLeaderboard('minigame2', 'minigame2');
+loadLeaderboard('minigame3', 'minigame3');
+
+// Refresh periodically
+setInterval(() => {
+  loadLeaderboard('minigame1', 'minigame1');
+  loadLeaderboard('minigame2', 'minigame2');
+  loadLeaderboard('minigame3', 'minigame3');
+}, 5000); // refresh every 5 seconds
+</script>
     </body>
 </html>
