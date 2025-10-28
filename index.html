@@ -8,18 +8,28 @@
         <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     </head>
     <body>
-        <h2 class="h2">The Dot-Com Boom</h2>
-        <table id="minigame1" border="1">
-            <tr><th>Time Stamp</th><th>Player</th><th>Score</th></tr>
-        </table>
-        <h2 class="h2">The Crypto Rise</h2>
-        <table id="minigame2" border="1">
-            <tr><th>Time Stamp</th><th>Player</th><th>Score</th></tr>
-        </table>
-        <h2 class="h2">The AI Revolution</h2>
-        <table id="minigame3" border="1">
-            <tr><th>Time Stamp</th><th>Player</th><th>Score</th></tr>
-        </table>
+        <div class="leaderboards-container">
+            <div class="leaderboard">
+                <h2 class="dark-blue-bg">The Dot-Com Boom</h2>
+                <table id="minigame1" border="1">
+                <tr><th>Time Stamp</th><th>Player</th><th>Score</th></tr>
+                </table>
+            </div>
+
+            <div class="leaderboard">
+                <h2 class="dark-blue-bg">The Crypto Rise</h2>
+                <table id="minigame2" border="1">
+                <tr><th>Time Stamp</th><th>Player</th><th>Score</th></tr>
+                </table>
+            </div>
+
+            <div class="leaderboard">
+                <h2 class="dark-blue-bg">The AI Revolution</h2>
+                <table id="minigame3" border="1">
+                <tr><th>Time Stamp</th><th>Player</th><th>Score</th></tr>
+                </table>
+            </div>
+        </div>
 
         <script>
 const scriptUrl = "https://script.google.com/macros/s/AKfycbzTkXzmBDQnire8iaBmc2bvC3HC30DowBsFli8hZfffiOMivUQScRxdj8mQ7O_im3fn/exec";
@@ -33,7 +43,7 @@ function loadLeaderboard(minigame, tableId) {
       data.forEach(row => {
         const tr = document.createElement("tr");
         tr.innerHTML = `
-          <td>${new Date(row.timestamp).toLocaleString()}</td>
+          <td>${new Date(row.timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</td>
           <td>${row.username}</td>
           <td>${row.score}</td>`;
         table.appendChild(tr);
