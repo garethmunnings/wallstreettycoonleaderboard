@@ -1,13 +1,34 @@
-h1, h2, h3 {
-    font-family: 'Luckiest Guy';
-    font-size: 50px;
+
+body {
+  background-color: #E1E1E1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+}
+
+h1 {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 20px;
+  background: #FF6417;
+              
+  color: white;                        
+  font-family: 'Luckiest Guy';
+  font-weight: 120;
+  font-size: 50px;
+  text-align: center;
+  text-shadow: 3px 3px 3px black;
+ 
+  box-shadow: 0 6px 0 #993300, 0 2px 2px rgba(0,0,0,0.4);
+  border: 2px solid #993300;  
+  margin: 0px;           
 }
 .leaderboards-container {
   display: flex;           /* put children side by side */
   justify-content: space-around; /* space evenly */
   flex-wrap: wrap;         /* wrap on smaller screens */
   gap: 20px;               /* optional spacing between boards */
-  margin: 20px;
+  margin: 0px;
 }
 
 .leaderboard {
@@ -19,13 +40,15 @@ h1, h2, h3 {
 .leaderboard table {
   border-collapse: collapse;
   width: 400px;            /* fixed width for each table */
+  font-family: 'Jua';
+  font-weight: 120;
 }
 
 .leaderboard th {
     font-size: 24px;
     padding: 8px;
     border-radius: 14px;
-    font-family: 'Jua';
+    
     text-shadow: 2px 2px 2px black;
     text-align: center;
     background-color: #489FF5;
@@ -34,22 +57,22 @@ h1, h2, h3 {
     color: white;
 }
 .leaderboard td {
-    font-family: 'Jua';
+    
     padding: 8px;
     text-align: center;
 }
 
 .dark-blue-bg {
     display: inline-block;               /* shrink to content width */
-    padding: 12px 24px;                  /* space inside the heading */
+    padding: 12px 14px;                  /* space inside the heading */
     border-radius: 25px;                 /* rounded corners */
     background: #2321D6;                /* top highlight to main color */
     color: white;                        /* text color */
     font-family: 'Luckiest Guy';
-    font-size: 50px;
+    font-weight: 120;
+    font-size: 40px;
     text-align: center;
-    text-shadow: 5px 5px 5px black;
-    letter-spacing: 2px;
+    text-shadow: 3px 3px 3px black;
     /* shadow similar to your bottom padding/shadow layer */
     box-shadow: 0 6px 0 #151381, 0 2px 2px rgba(0,0,0,0.4);
     border: 2px solid black;             /* mimics the stroke in XML */
