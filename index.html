@@ -77,6 +77,7 @@ function formatScore(row) {
     case "minigame1":   // money
       return `$${Number(row.score).toFixed(2)}`; // e.g., $1200.50
     case "minigame2":   // seconds
+      return `${row.score.toFixed(0)} hints`;;
     case "minigame3":
       return `${row.score} s`;                  // e.g., 45 s
     default:
